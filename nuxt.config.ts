@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss"],
+  modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt", "@nuxt/image"],
   nitro: {
     experimental: {
       database: true,
@@ -10,6 +10,9 @@ export default defineNuxtConfig({
   routeRules: {
     "/": {
       ssr: false,
+    },
+    "/posts": {
+      ssr: true,
     },
   },
 });

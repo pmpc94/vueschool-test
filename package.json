@@ -12,12 +12,13 @@
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
-    "@nuxt/image": "^1.4.0",
     "@nuxtjs/tailwindcss": "^6.11.4",
+    "@pinia/nuxt": "^0.5.1",
     "@vueuse/nuxt": "^10.9.0",
     "drizzle-orm": "^0.29.5",
     "nanoid": "^5.0.6",
     "nuxt": "^3.10.3",
+    "pinia": "^2.1.7",
     "typescript": "^5.4.2",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
@@ -25,6 +26,8 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
+    "@nuxt/devtools": "^1.1.5",
+    "@nuxt/image": "^1.4.0",
     "@nuxtjs/seo": "^2.0.0-rc.9",
     "@tailwindcss/typography": "^0.5.10",
     "better-sqlite3": "^9.4.3",
