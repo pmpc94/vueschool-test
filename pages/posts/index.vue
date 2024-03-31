@@ -12,6 +12,7 @@
       :title="post.title" 
       :excerpt="post.excerpt" 
       :image-url="post.image"
+      :published-at="post.publishedAt"
     />
     <div class="mb-4 w-full text-center">
       <button v-if="postsOffset >= 10" @click="previousPage" class="mr-4 bg-slate-100 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Previous page</button>
@@ -22,9 +23,9 @@
 
 <script lang="ts" setup>
 import type { PostWithUser } from '~/types/index'
-import { useBlogStore } from '../../stores'
-import { ORDER } from '../../constants'
-const route = useRouter()
+import { useBlogStore } from '~/stores'
+import { ORDER } from '~/constants'
+const router = useRouter()
 const { query } = useRoute()
 const blog = useBlogStore()
 const { getPosts } = storeToRefs(blog)
@@ -37,7 +38,7 @@ const postsOffset = ref(0)
 
 const onOrderChange = async () => {
   postsOrder.value = isOrderChecked.value ? ORDER.NEWEST : ORDER.OLDEST
-  route.push({
+  router.push({
         query: { order: postsOrder.value }
       });
   await setPosts()
