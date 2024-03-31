@@ -1,5 +1,4 @@
 <template>
-  <div class="mx-80 flex flex-wrap justify-center items-center">
     <div class="prose prose-xl prose-p:text-slate-600 my-10 text-center">
       <h1>Our Blog</h1>
       <p>This is a beautiful and simple blog created by Pedro Carolina specially tailored for the Senior Frontend Developer Test. I hope you enjoy it.</p>
@@ -18,7 +17,6 @@
       <button v-if="postsOffset >= 10" @click="previousPage" class="mr-4 bg-slate-100 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Previous page</button>
       <button @click="nextPage" class=" bg-slate-100 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Next page</button>
     </div>
-  </div>
 </template>
 
 <script lang="ts" setup>

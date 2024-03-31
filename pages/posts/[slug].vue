@@ -1,6 +1,5 @@
 <template>
-  <div v-if="post" class="mx-96 flex flex-wrap justify-center items-center my-10">
-    <div class="prose">
+    <div v-if="post" class="prose">
       <div class="flex items-center w-full">
           <NuxtImg :src="post.user.avatar" class="w-16 h-16 rounded-full mr-4"/>
           <div class="flex flex-col">
@@ -18,7 +17,9 @@
       </div>
       <div v-html="content"></div>
     </div>
-  </div>
+    <div v-else>
+      <PostError />
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -39,10 +40,12 @@ const fullDate = ref()
 const content = ref();
 
 watch(post, (newPost) => {
-  const { getFullDate } = useDate(newPost.publishedAt)
-  const { getFullName } = useUser(newPost.user)
-  fullName.value = getFullName
-  fullDate.value = getFullDate
+  if (newPost) {
+    const { getFullDate } = useDate(newPost.publishedAt)
+    const { getFullName } = useUser(newPost.user)
+    fullName.value = getFullName
+    fullDate.value = getFullDate
+  }
 }, { once: true})
 
 onMounted(async () => {

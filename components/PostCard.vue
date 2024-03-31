@@ -43,4 +43,3 @@ const { elapsedTime } = useDate(props.publishedAt)
 
 const { getFullName } = useUser(props.user)
 </script>
-~/composables/useDate~/composables/useUser
