@@ -19,8 +19,8 @@ export const useDate = (timestamp: number) => {
         const elapsedHours = Math.floor(elapsedTime / (1000 * 60 * 60));
         const elapsedDays = Math.floor(elapsedTime / (1000 * 60 * 60 * 24));
         const elapsedMonths = Math.floor(elapsedDays / 30);
-        const elapsedYears = Math.floor(elapsedDays / 365);
-
+        const elapsedYears = Math.round(elapsedDays / 365);
+        
         if (elapsedHours < 24) {
             return [elapsedHours, `hour${elapsedHours > 1 ? 's' : ''}`]
         } else if (elapsedDays < 31) {
