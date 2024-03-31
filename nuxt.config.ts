@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     "/posts": {
       ssr: true,
     },
-    "/posts/:{id}": {
+    "/posts/:id": {
       ssr: true,
     },
   },
