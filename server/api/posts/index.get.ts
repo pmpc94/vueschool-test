@@ -1,4 +1,5 @@
 import { postSelectQueryHelper } from "~/server/utils";
+import { ORDER } from "~/constants"
 
 export type User = typeof tables.users.$inferSelect;
 export type Post = typeof tables.posts.$inferSelect;
@@ -24,7 +25,7 @@ export default defineEventHandler(async (event): Promise<PostWithUser> => {
           )
         ),
       order: z
-        .union([z.literal("newestFirst"), z.literal("oldestFirst")])
+        .union([z.literal(ORDER.NEWEST), z.literal(ORDER.OLDEST)])
         .optional(),
     })
   );
@@ -39,7 +40,7 @@ export default defineEventHandler(async (event): Promise<PostWithUser> => {
       .limit(payload.limit)
       .offset(payload.offset)
       .orderBy(
-        payload.order === "oldestFirst"
+        payload.order === ORDER.OLDEST
           ? asc(tables.posts.publishedAt)
           : desc(tables.posts.publishedAt)
       );
