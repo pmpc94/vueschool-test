@@ -17,7 +17,7 @@
       </div>
       <div v-html="content"></div>
     </div>
-    <div v-else>
+    <div v-else-if="!isLoading">
       <PostError />
     </div>
 </template>
@@ -35,9 +35,10 @@ const blog = useBlogStore()
 const { getPostDetail } = storeToRefs(blog)
 const { fetchDetail } = blog
 const post = ref<PostWithUser>()
-const fullName = ref()
-const fullDate = ref()
-const content = ref();
+const fullName = ref(null)
+const fullDate = ref(null)
+const content = ref(null);
+const isLoading = ref(true)
 
 watch(post, (newPost) => {
   if (newPost) {
@@ -49,11 +50,17 @@ watch(post, (newPost) => {
 }, { once: true})
 
 onMounted(async () => {
-  await nextTick();
-  await fetchDetail(params.slug)
-  post.value = getPostDetail.value
-  if (post.value?.content) {
-    content.value = sanitizeHtml(post.value.content)
+  try {
+    await nextTick();
+    await fetchDetail(params.slug)
+    post.value = getPostDetail.value
+    if (post.value?.content) {
+      content.value = sanitizeHtml(post.value.content)
+    }
+    isLoading.value = false
+  } catch (e) {
+    console.log(e)
+    isLoading.value = false
   }
 })
 </script>
