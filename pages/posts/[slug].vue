@@ -24,8 +24,8 @@
 <script setup lang="ts">
 import type { PostWithUser } from '~/types';
 import { useBlogStore } from '~/stores'
-import { useUser } from '~/composable/useUser';
-import { useDate } from '~/composable/useDate';
+import { useUser } from '~/composables/useUser';
+import { useDate } from '~/composables/useDate';
 import sanitizeHtml from 'sanitize-html';
 
 const { params } = useRoute()

@@ -27,8 +27,8 @@
 
 <script lang="ts" setup>
 import type { User } from '~/types'
-import { useDate } from '~/composable/useDate'
-import { useUser } from '~/composable/useUser'
+import { useDate } from '~/composables/useDate'
+import { useUser } from '~/composables/useUser'
 
 const props = defineProps<{
     id: string
