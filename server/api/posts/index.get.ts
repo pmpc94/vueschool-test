@@ -39,7 +39,7 @@ export default defineEventHandler(async (event): Promise<PostWithUser> => {
       .limit(payload.limit)
       .offset(payload.offset)
       .orderBy(
-        payload.order === "newestFirst"
+        payload.order === "oldestFirst"
           ? asc(tables.posts.publishedAt)
           : desc(tables.posts.publishedAt)
       );

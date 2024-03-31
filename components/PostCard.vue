@@ -12,7 +12,7 @@
         <div class="my-4">
             <h4>{{ title }}</h4>
         </div>
-        <div class="mb-4">
+        <div class="mb-4 h-16">
             {{ excerpt }}
         </div>
         <div class="flex justify-between items-center">
